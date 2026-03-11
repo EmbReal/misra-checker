@@ -124,6 +124,22 @@ Format: `// MISRA-suppress: <rule-id>  <mandatory justification text>`
 
 ---
 
+## Pipelines
+
+In the repositories there are 3 `github` workflows:
+
+1. `misra-analysis.yml`: workflow to be used by external users (like students)
+   to run an analysis on their code. 
+   
+   **Note**: the workflow expects the code to
+   be in the `src` folder
+1. `misra-checker-tests.yml`: workflow to test the checker itself
+1. `misra-analysis-no-download.yml`: same as `misra-analysis.yml` but requires
+   the `misra_check.py` to be present in the repository. Typically used in the
+   present repository.
+
+---
+
 ## Analysis Modes
 
 ### Regex mode (default, always available)

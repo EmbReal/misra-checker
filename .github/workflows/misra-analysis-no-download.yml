@@ -1,5 +1,5 @@
-# .github/workflows/misra.yml
-name: MISRA C++ 2023
+# .github/workflows/misra-analysis.yml
+name: MISRA C++ 2023 — Code Analysis
 
 on:
   push:
@@ -23,14 +23,7 @@ jobs:
       - name: Install libclang (AST-based checks)
         run: pip install libclang
 
-      - name: Download MISRA checker
-        run: |
-          curl -sSL https://raw.githubusercontent.com/your-org/misra-checker/main/misra_checker.py \
-            -o misra_checker.py
-          # Optional: verify checksum to ensure integrity
-          # echo "EXPECTED_SHA256  misra_checker.py" | sha256sum --check
-
-      - name: Run MISRA checker (terminal summary)
+      - name: Run MISRA checker
         run: |
           python misra_checker.py src/ \
             --format json -o misra_findings.json \
