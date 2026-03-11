@@ -117,7 +117,7 @@ R_OCTAL    = _reg("6.5.1",  Category.REQUIRED,
     "The leading-zero octal prefix is easily confused with decimal.")
 
 R_HEXCASE  = _reg("6.5.2",  Category.ADVISORY,
-    "Hexadecimal digit letters shall be uppercase (A–F)",
+    "Hexadecimal digit letters shall be uppercase (A-F)",
     "Lowercase l/1 ambiguity; consistent style aids readability.")
 
 # --- Memory & Resources -------------------------------------------------------
