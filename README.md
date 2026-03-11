@@ -170,14 +170,14 @@ Results are deduplicated against regex findings.
 
 ## Comparison with Commercial Tools
 
-| Feature                    | This tool | PC-lint Plus | Polyspace | LDRA |
-|----------------------------|-----------|--------------|-----------|------|
-| MISRA C++ 2023 certified   | ❌        | ✅           | ✅        | ✅   |
-| Cost                       | Free      | ~$1k+/seat   | ~$5k+     | ~$10k+ |
-| Rules covered              | ~18       | 250+         | 250+      | 250+ |
-| False positive rate        | Medium    | Low          | Very Low  | Very Low |
-| CI/CD integration          | ✅        | ✅           | ✅        | ✅   |
-| HTML/JSON reports          | ✅        | ✅           | ✅        | ✅   |
+| Feature                    | This tool | Commercial tools |
+|----------------------------|-----------|------------------|
+| MISRA C++ 2023 certified   | ❌        | ✅               |
+| Cost                       | Free      | ~$1k+/seat       |
+| Rules covered              | ~19       | 250+             |
+| False positive rate        | Medium    | Very Low         |
+| CI/CD integration          | ✅        | ✅               |
+| HTML/JSON reports          | ✅        | ✅               |
 
 **Recommended workflow**: Use this tool for fast feedback during development,
 supplement with a certified tool for formal compliance evidence.
