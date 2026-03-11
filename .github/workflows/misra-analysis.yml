@@ -23,6 +23,13 @@ jobs:
       - name: Install libclang (AST-based checks)
         run: pip install libclang
 
+      - name: Download MISRA checker
+        run: |
+          curl -sSL https://raw.githubusercontent.com/EmbReal/misra-checker/main/misra_checker.py \
+            -o misra_checker.py
+          # Optional: verify checksum to ensure integrity
+          # echo "EXPECTED_SHA256  misra_checker.py" | sha256sum --check
+          
       - name: Read config and build checker arguments
         run: |
           python - << 'PYEOF'
