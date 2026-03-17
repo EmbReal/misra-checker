@@ -17,7 +17,7 @@ subset of **MISRA C++ 2023** rules using regex/text analysis and (optionally) li
 | 6.3.1    | Required  | The `register` storage-class specifier shall not be used |
 | 6.5.1    | Required  | Octal integer literals shall not be used |
 | 6.5.2    | Advisory  | Hexadecimal digit letters shall be uppercase (A-F) |
-| 7.0.2    | Required  | `NULL` shall not be used; use `nullptr` |
+| 7.11.1    | Required  | `nullptr` shall be the only form of the null-pointer-constant|
 | 8.2.2    | Required  | C-style casts and functional notation casts shall not be used |
 | 8.2.11   | Required  | An argument passed via ellipsis shall have an appropriate type |
 | 9.3.1    | Required  | The body of an iteration-statement or a selection-statement shall be a compound-statement |

@@ -104,9 +104,10 @@ R_SWITCH   = _reg("9.4.2",  Category.REQUIRED,
     "Implicit fall-through is a common defect source.")
 
 # --- Expressions / Casts -----------------------------------------------------
-R_NULL     = _reg("7.0.2",  Category.REQUIRED,
-    "NULL shall not be used as a null-pointer constant; use nullptr",
-    "NULL is an integer macro and is not type-safe. nullptr is the C++11 replacement.")
+R_NULL     = _reg("7.11.1", Category.REQUIRED,
+    "nullptr shall be the only form of the null-pointer-constant",
+    "Using any integral literal representing zero, including 0 or NULL, as the "
+    "null-pointer-constant is a violation. NULL shall not be used in any other context.")
 
 R_CCAST    = _reg("8.2.2",  Category.REQUIRED,
     "C-style casts and functional notation casts shall not be used",
@@ -454,7 +455,7 @@ def check_braces(lines: List[str], fp: str) -> List[Finding]:
 
 def check_switch_fallthrough(lines: List[str], fp: str) -> List[Finding]:
     """
-    Basic heuristic: a 'case:' label without break/return/throw/fallthrough
+    Basic heuristic: a 'case:' label without break/return/throw/[[fallthrough]]
     before the next 'case:' or '}'.
     """
     out = []
@@ -475,7 +476,7 @@ def check_switch_fallthrough(lines: List[str], fp: str) -> List[Finding]:
                 if not any(term_pat.search(_strip_line_comment(bl)) for bl in block):
                     out.append(_make(R_SWITCH, fp, last_case + 1,
                                      snippet=lines[last_case].strip(),
-                                     note="No break/return/throw/fallthrough before next case"))
+                                     note="No break/return/throw/[[fallthrough]] before next case"))
             last_case = i - 1
         if line.strip() == "}":
             in_switch = False
@@ -1059,4 +1060,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-    

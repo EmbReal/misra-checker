@@ -121,18 +121,18 @@ class TestGoto(unittest.TestCase):
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# 7.0.2  NULL → nullptr
+# 7.11.1  nullptr shall be the only form of the null-pointer-constant
 # ═════════════════════════════════════════════════════════════════════════════
 
 class TestNullMacro(unittest.TestCase):
 
     def test_violation_null_comparison(self):
         findings = _check(mc.check_null_macro, "if (ptr == NULL) return;")
-        self.assertIn("7.0.2", _rules_hit(findings))
+        self.assertIn("7.11.1", _rules_hit(findings))
 
     def test_violation_null_assignment(self):
         findings = _check(mc.check_null_macro, "int* p = NULL;")
-        self.assertIn("7.0.2", _rules_hit(findings))
+        self.assertIn("7.11.1", _rules_hit(findings))
 
     def test_clean_nullptr(self):
         """nullptr must not trigger the NULL rule."""
@@ -1031,7 +1031,7 @@ class TestRuleRegistry(unittest.TestCase):
 
     EXPECTED_RULES = {
         "6.1.1", "10.1.2", "6.3.1", "6.5.1", "6.5.2",
-        "7.0.2", "8.2.2",
+        "7.11.1", "8.2.2",
         "9.6.1", "8.2.11",
         "9.3.1", "9.4.2",
         "14.1.1",
@@ -1080,4 +1080,3 @@ class TestRuleRegistry(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
-    
