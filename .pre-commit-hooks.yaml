@@ -1,0 +1,5 @@
+- id: misra-check
+  name: MISRA C++ 2023 Checker
+  entry: misra_checker
+  language: python
+  types_or: [c, c++, c-header, c++-header]
