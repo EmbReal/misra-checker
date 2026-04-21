@@ -198,6 +198,11 @@ def _strip_line_comment(line: str) -> str:
     return line[:idx] if idx != -1 else line
 
 
+def _strip_string_literals(code: str) -> str:
+    """Replace string literal contents with spaces to avoid false-positive matches."""
+    return re.sub(r'"(?:[^"\\]|\\.)*"', lambda m: '"' + ' ' * (len(m.group(0)) - 2) + '"', code)
+
+
 def _get_suppressions(lines: List[str]) -> Dict[int, set]:
     """
     Return {1-based line number: set of suppressed rule_ids}.
@@ -283,7 +288,7 @@ def check_dynamic_memory(lines: List[str], fp: str) -> List[Finding]:
     for i, line in enumerate(lines, 1):
         if _is_comment_line(line) or _is_preprocessor_line(line):
             continue
-        code = _strip_line_comment(line)
+        code = _strip_string_literals(_strip_line_comment(line))
         if operator_def.search(code):
             continue
         m = pat.search(code)
